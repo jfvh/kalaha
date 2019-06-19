@@ -13,39 +13,65 @@ export function assign(): PlayResponse | undefined { //wanted to do union with G
       status = GameStatus.WAITING_FOR_SECOND_PLAYER;
       return {
         gameId: getGameId(),
-        playerId: getPlayer1Id()
+        playerId: initPlayer1Id()
       }
     case (GameStatus.WAITING_FOR_SECOND_PLAYER):
       status = GameStatus.PLAYING;
       return {
         gameId: getGameId(),
-        playerId: getPlayer2Id()
+        playerId: initPlayer2Id()
       };
   }
+  console.log("p1:", player1Id)
+  console.log("p2:", player2Id)
+
   return undefined;
+}
+
+export function statusGameFinished() {
+  status = GameStatus.FINISHED;
+}
+
+export function reset() {
+  //reset for next game
+  status = GameStatus.NO_PLAYERS;
+  player1Id = '';
+  player2Id = '';
+  gameId = getUUID();
 }
 
 export function getStatus() {
   return status;
 }
 
-function getGameId(): string {
+export function getGameId(): string {
   if (!gameId) {
     gameId = getUUID();
   }
+  gameId = "g";//dev hack
   return gameId;
 }
 
-function getPlayer1Id() {
-  if (!player1Id) {
-    player1Id = getUUID();
-  }
+export function isValidPlayer(playerId: string) {
+  return player1Id === playerId || player2Id === playerId;
+}
+
+export function getPlayer1Id() {
   return player1Id;
 }
 
-function getPlayer2Id() {
-  if (!player2Id) {
-    player2Id = getUUID();
-  }
+export function getPlayer2Id() {
+  return player2Id;
+}
+
+function initPlayer1Id() {
+  player1Id = getUUID();
+  player1Id = "p1";//dev hack
+  return player1Id;
+}
+
+function initPlayer2Id() {
+  player2Id = getUUID();
+  player2Id = "p2";//dev hack
   return player2Id;
 }

@@ -21,7 +21,7 @@ return
   {
     state=WAITING_FOR_PLAYER|PLAYING|FINISHED
     yourTurn=boolean
-    game={gameState}
+    board={board}
   }
 
 ```
