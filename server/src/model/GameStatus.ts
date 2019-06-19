@@ -1,0 +1,6 @@
+export enum GameStatus {
+  NO_PLAYERS,
+  WAITING_FOR_SECOND_PLAYER,
+  PLAYING,
+  FINISHED
+}
