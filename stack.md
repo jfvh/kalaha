@@ -1,5 +1,8 @@
 # Stack
 
+ - Typescript
+ - webpack
+
 ## Server
 
   - nodejs
@@ -11,4 +14,3 @@
   - react
   - hooks
   - axios
-  
