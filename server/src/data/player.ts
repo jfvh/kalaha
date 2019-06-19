@@ -1,6 +1,5 @@
 import { getPlayer1Id, getPlayer2Id } from "./meta";
-
-enum Player { PLAYER_1, PLAYER_2 };
+import { Player } from "../model/Player";
 
 let playerHasTurn: Player = Player.PLAYER_1; //player one starts
 let lastWinnerId: string;
@@ -20,6 +19,14 @@ export function wasLastWinner(playerId: string): boolean {
 export function hasTurn(playerId: string): boolean {
   const playerWithTurnId = getIdOfPlayerWithTurn();
   return playerId === playerWithTurnId;
+}
+
+export function getPlayerFromId(playerId: string) {
+  if (playerId === getPlayer1Id()) {
+    return Player.PLAYER_1;
+  } else if (playerId === getPlayer2Id()) {
+    return Player.PLAYER_2;
+  }
 }
 
 function getIdOfPlayerWithTurn(): string {

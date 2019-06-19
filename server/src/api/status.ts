@@ -1,5 +1,5 @@
 import { getStatus } from "../data/meta";
-import { hasTurn, wasLastWinner } from "../data/game";
+import { hasTurn, wasLastWinner } from "../data/player";
 import { getBoard } from "../data/board";
 import { GameStatus } from '../model/GameStatus';
 

@@ -1,5 +1,7 @@
 import { getGameId, isValidPlayer } from "../data/meta";
-
+/**
+ * validates if a valid player tries to request data from a valid play
+ */
 export function validatedRequest(req: any, res: any, after: Function) {
   const isValidRequest = isValid(req, res);
   if (isValidRequest) {

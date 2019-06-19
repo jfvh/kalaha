@@ -1,0 +1,1 @@
+const AMOUNT_OF_PITS = 6; 
