@@ -14,12 +14,19 @@ return
 
 ## poll for status
 
-GET /status?gameid={gameid}&playerid={playerid}
+GET /status
+body
+```
+{
+  gameid={}
+  playerid={}
+}
+```
 
 return 
 ```
   {
-    state=WAITING_FOR_PLAYER|PLAYING|FINISHED
+    state=NO_PLAYERS|WAITING_FOR_SECOND_PLAYER|PLAYING|FINISHED
     yourTurn=boolean
     board={board}
   }
