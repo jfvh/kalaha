@@ -1,6 +1,6 @@
 export interface Board {
-  player1BigPit: Number;
-  player1Pits: Number[];
-  player2BigPit: Number;
-  player2Pits: Number[];
+  player1BigPit: number;
+  player1Pits: number[];
+  player2BigPit: number;
+  player2Pits: number[];
 }

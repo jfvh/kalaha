@@ -3,6 +3,9 @@ import { Player } from "../model/Player";
 
 let playerHasTurn: Player = Player.PLAYER_1; //player one starts
 let lastWinnerId: string;
+export function getOtherPlayer(self: Player) {
+  return (self === Player.PLAYER_1) ? Player.PLAYER_2 : Player.PLAYER_1;
+}
 
 export function nextPlayer() {
   if (playerHasTurn === Player.PLAYER_1) {

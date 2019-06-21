@@ -1,6 +1,6 @@
 import { hasTurn, getPlayerFromId } from "../data/player";
-import { status } from './status';
 import { getPitValue } from "../data/board";
+import { makeMove } from "../gamelogic/makeMove";
 
 //todo implement
 export function move(req: any, res: any) {
@@ -27,6 +27,10 @@ export function move(req: any, res: any) {
     res.status(403).send({ "message": `There are no stones left in the pit, select another one.` });
     return;
   }
+
+  //implement do move logic
+  const updatedBoard = makeMove(player, pitNumber);
+  res.status(200).send({ "board": updatedBoard });
 
 
 }
