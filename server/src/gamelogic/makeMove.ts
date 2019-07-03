@@ -1,65 +1,37 @@
 import { Board } from '../model/Board';
 import { Player } from '../model/Player';
-import { getBoard, getPitValue } from '../data/board';
+import { getPitValue, dropOneStoneInEachpit, dropStoneInSmallPit, getBoard, dropStoneInBigPit } from '../data/board';
 import { getOtherPlayer } from '../data/player';
 
 export function makeMove(self: Player, pitNumber: number): Board {
   const otherPlayer = getOtherPlayer(self);
-  let board = getBoard();
   let stones = getPitValue(self, pitNumber);
   let index = pitNumber;
-  while (stones >= 1) {
-    //drop stones in own pits
-    if (index < 6) {
 
-
-    }
-
-
-
-
-
+  // if multiple rounds, handle that first
+  const modulo = Math.floor(stones / TOTAL_PITS)
+  for (let i = 0; i < modulo; i++) {
+    console.log('drop one stone in each pit first!')
+    dropOneStoneInEachpit();
   }
-
+  stones = stones % TOTAL_PITS;
+  // now stones < TOTAL PITS
+  while (stones > 0) {
+    handleStoneDropping(index);
+    stones--;
+    index++;
+  }
+  return getBoard();
 }
 
-
-function dropStoneInPit(playerTurn: Player, playerPit: Player, bigPit: boolean, pitNumber: number, board: Board, stones: number): Board {
-  if (stones === 0) {
-    return board;
+function handleStoneDropping(index: number) {
+  if (index < AMOUNT_OF_PITS_PER_PLAYER) {
+    dropStoneInSmallPit(Player.PLAYER_1, index);
+  } else if (index === AMOUNT_OF_PITS_PER_PLAYER) {
+    dropStoneInBigPit(Player.PLAYER_1);
+  } else if (index > AMOUNT_OF_PITS_PER_PLAYER && index < (TOTAL_PITS - 1)) {
+    dropStoneInSmallPit(Player.PLAYER_2, index - (AMOUNT_OF_PITS_PER_PLAYER + 1));
+  } else if (index === (TOTAL_PITS - 1)) {
+    dropStoneInBigPit(Player.PLAYER_2);
   }
-
-  let newBoard;
-  let nextPitPlayer;
-  let nextPitBig;
-  let nextPitNumber;
-
-  if (playerPit === Player.PLAYER_1) {
-    if (bigPit) {
-      newBoard = Object.assign({}, board, { player1BigPit: board.player1BigPit++ })
-      nextPitBig = false;
-      nextPitPlayer = Player.PLAYER_2;
-      nextPitNumber = 0;
-    } else {
-      newBoard = Object.assign({}, board, { player1Pits[pitNumber]: board.player1Pits[pitNumber]++ })
-      nextPitNumber = pitNumber + 1;
-      if (nextPitNumber > 5) {
-        nextPitBig = true;
-      }
-    }
-  } else { //Player 2 turn
-    if (bigPit) {
-      newBoard = Object.assign({}, board, { player2BigPit: board.player2BigPit++ })
-      nextPitBig = false;
-      nextPitPlayer = Player.PLAYER_1;
-      nextPitNumber = 0;
-    } else {
-      newBoard = Object.assign({}, board, { player2Pits[pitNumber]: board.player2Pits[pitNumber]++ })
-      nextPitNumber = pitNumber + 1;
-      if (nextPitNumber > 5) {
-        nextPitBig = true;
-      }
-    }
-  }
-
 }

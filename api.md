@@ -40,8 +40,7 @@ GET /move?gameid={gameid}&playerid={playerid}&pitId={pitId}
 return
 ```
   {
-    result=ACCEPTED|DECLINED|FINISHED
-    game={gamestate}
+    board={board}
   }
 ```
 

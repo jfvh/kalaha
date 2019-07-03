@@ -17,7 +17,7 @@ export function move(req: any, res: any) {
   //valid player takes turn
 
   const pitNumber = req.query.pitNumber;
-  if (pitNumber < 0 || pitNumber > (AMOUNT_OF_PITS - 1)) {
+  if (pitNumber < 0 || pitNumber > (AMOUNT_OF_PITS_PER_PLAYER - 1)) {
     res.status(403).send({ "message": `Not a valid pit number (${pitNumber})` });
     return;
   }
