@@ -1,0 +1,3 @@
+"use strict";
+var AMOUNT_OF_PITS_PER_PLAYER = 6;
+var TOTAL_PITS = 2 * AMOUNT_OF_PITS_PER_PLAYER + 2;

@@ -6,7 +6,8 @@
   "scripts": {
     "tsc": "tsc",
     "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
-    "start": "tsc && node dist/index.js"
+    "start": "tsc && node dist/index.js",
+    "test": "jest"
   },
   "author": "jfvh",
   "license": "ISC",
@@ -17,5 +18,12 @@
     "ts-node-dev": "^1.0.0-pre.40",
     "tsc": "^1.20150623.0",
     "typescript": "^3.5.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "babel-plugin-rewire": "^1.2.0",
+    "jest": "^24.8.0",
+    "jest-junit": "^6.4.0",
+    "ts-jest": "^24.0.2"
   }
 }

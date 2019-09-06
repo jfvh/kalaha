@@ -1,6 +1,7 @@
 import { createNewBoard } from "../utils/boardUtils";
 import { Board } from '../model/Board';
 import { Player } from "../model/Player";
+import { AMOUNT_OF_PITS_PER_PLAYER } from '../constants';
 
 let board: Board;
 
@@ -15,6 +16,15 @@ export function dropStoneInBigPit(player: Player) {
     board.player1BigPit = board.player1BigPit + 1;
   } else {
     board.player2BigPit = board.player2BigPit + 1;
+  }
+  return board;
+}
+
+export function removeStonesFromPit(player: Player, pitnumber: number) {
+  if (player === Player.PLAYER_1) {
+    board.player1Pits[pitnumber] = 0;
+  } else {
+    board.player2Pits[pitnumber] = 0;
   }
   return board;
 }

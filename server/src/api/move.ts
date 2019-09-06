@@ -1,6 +1,7 @@
 import { hasTurn, getPlayerFromId } from "../data/player";
 import { getPitValue } from "../data/board";
 import { makeMove } from "../gamelogic/makeMove";
+import { AMOUNT_OF_PITS_PER_PLAYER } from '../constants';
 
 //todo implement
 export function move(req: any, res: any) {
